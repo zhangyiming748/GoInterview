@@ -10,41 +10,43 @@ import (
 	"fmt"
 )
 
-func divide(dividend int, divisor int) int {
-	if divisor == 0 {
-		return 0
-	}
-	if dividend == divisor {
-		return 1
-	}
-
-	count := 1
-	for i := 0; i < dividend; i++ {
-		if dividend-divisor >= divisor {
-			dividend = dividend - divisor
-			count++
-		} else {
-			break
-		}
-	}
-	if isNegative(dividend, divisor) {
-		count=-count
-	}
-	return count
+func main() {
+	devid := 10
+	divis := 3
+	v := div(devid, divis)
+	fmt.Println(v)
 }
-func isNegative(dividend int, divisor int) bool {
-	if dividend > 0 || divisor > 0 {
+
+func getsAbs(n int) int {
+	if n < 0 {
+		return -n
+	}
+	return n
+}
+func isNegative(dividend, divisor int) bool {
+	if dividend > 0 && divisor > 0 {
 		return false
-	} else if dividend < 0 || divisor < 0 {
+	} else if dividend < 0 && divisor < 0 {
 		return false
 	} else {
 		return true
 	}
 }
-
-func main() {
-	devid := -4
-	divis := 2
-	v := divide(devid, divis)
-	fmt.Println(v)
+func div(dividend, divisor int) int {
+	var (
+		absdend int = getsAbs(dividend)
+		abssor  int = getsAbs(divisor)
+		count   int = 0
+		limit   int = absdend
+	)
+	for i := 0; i <= limit; i++ {
+		if absdend >= abssor {
+			count++
+			absdend = absdend - abssor
+		}
+	}
+	if isNegative(dividend, divisor) {
+		count = -count
+	}
+	return count
 }

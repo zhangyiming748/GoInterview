@@ -14,5 +14,5 @@ func main() {
 	// reflect
 	fmt.Println("v1 type:", reflect.TypeOf(v1))
 	fmt.Println("v2 type:", reflect.TypeOf(v2))
-	typey(v1)
+
 }

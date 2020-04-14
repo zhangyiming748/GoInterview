@@ -19,6 +19,17 @@ func twoSum(nums []int, target int) []int {
 	}
 	return result
 }
+//选择第一个小于target的数
+func another(nums []int, target int)[]int{
+	resule :=make([]int,0)
+	for i,v:=range nums{
+		if v>target{
+			aim:=target-v
+			
+		}
+	}
+
+}
 func main() {
 	nums := make([]int, 0)
 	target := 9
