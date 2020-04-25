@@ -77,10 +77,10 @@ func divide(dividend int, divisor int) int {
 			dividend = 0 - dividend
 		}
 		if dividend > (1<<31-1) || dividend < (0-1<<31) {
-			return 1<<31 - 1
+			return dividend
 		}
 
-		return dividend
+
 	}
 	count := 0
 	for i := dividend; i >= divisor; i = i - divisor {
