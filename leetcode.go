@@ -25,7 +25,7 @@ func removeElement(nums []int, val int) int {
 }
 
 //136.只出现一次的数字
-func singleNumber(nums []int) int {
+func singleNumberstand(nums []int) int {
 	res := 0
 	for _, v := range nums {
 		res = res ^ v
@@ -106,6 +106,45 @@ func mySqrt(x int) int {
 		}
 	}
 	return ans
+}
+
+//3. 无重复字符的最长子串
+func lengthOfLongestSubstring(s string) int {
+	for i := range s {
+
+	}
+}
+
+type times int
+
+//136
+func singleNumber(nums []int) int {
+	once := make(map[int]times)
+	for _, v := range nums {
+
+		once[v]++
+
+	}
+	for key, value := range once {
+		if value == 1 {
+			return key
+		}
+	}
+
+	return 0
+}
+
+//287
+func findDuplicate(nums []int) int {
+	once := make(map[int]bool)
+	for _, v := range nums {
+		if _, ok := once[v]; ok {
+			return v
+		} else {
+			once[v] = true
+		}
+	}
+	return 0
 }
 
 func main() {
