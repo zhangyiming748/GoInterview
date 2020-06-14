@@ -1,29 +1,5 @@
 package main
 
-import "fmt"
-
-//27.移除元素
-func removeElement(nums []int, val int) int {
-	length := len(nums)
-	if length == 0 {
-		return 0
-	}
-
-	i := 0
-	j := 0
-	for j := 0; j < length; j++ {
-		if nums[j] == val {
-			j++
-		} else {
-			nums[i] = nums[j]
-			i++
-			j++
-		}
-	}
-	return length - (j - i)
-
-}
-
 //136.只出现一次的数字
 func singleNumberstand(nums []int) int {
 	res := 0
@@ -108,13 +84,6 @@ func mySqrt(x int) int {
 	return ans
 }
 
-//3. 无重复字符的最长子串
-func lengthOfLongestSubstring(s string) int {
-	for i := range s {
-
-	}
-}
-
 type times int
 
 //136
@@ -147,19 +116,64 @@ func findDuplicate(nums []int) int {
 	return 0
 }
 
-func main() {
-	var line []int = []int{1, 2, 1, 2, 3, 7}
-	s := singleNumber(line)
-	fmt.Println(s)
-	t := twoSum(line, 9)
-	fmt.Println(t)
-	num := 1324
-	n := reverse(num)
-	fmt.Println(n)
+//27移除元素
+func removeElement(nums []int, val int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	var j int = 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] != val {
+			nums[j] = nums[i]
+			j++
+		}
+	}
+	return j
+}
+
+//28. 实现 strStr()
+//func strStr(haystack string, needle string) int {
+//	if len(haystack)==0&&len(needle)==0{
+//		return 0
+//	}
+//	rHay:=[]rune(haystack)
+//	rNeed:=[]rune(haystack)
+//	for i,v:=range rHay{
+//		fmt.Printf("%v\t%v\n",i,string(v))
+//		fmt.Printf("%v\n",string(rNeed[0:1]))
+//		if
+//	}
+//	return 0
+//}
+//15. 三数之和
+//给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
+//
+//注意：答案中不可以包含重复的三元组。
+func threeSum(nums []int) [][]int {
+	answer := make([][]int, 0)
 	var (
-		dend = -10
-		sor  = 3
+		a int
+		b int
+		c int
 	)
-	dev := divide(dend, sor)
-	fmt.Println(dev)
+	for i := 0; i < len(nums); i++ {
+		a = 0 - nums[i]
+		for j := i + 1; i < len(nums); j++ {
+			b = nums[j]
+			for k := j + 1; k < len(nums); j++ {
+				c = nums[k]
+				if b+c == a {
+					enable := make([]int, 0)
+					enable = append(enable, a, b, c)
+					answer = append(answer, enable)
+				}
+			}
+		}
+	}
+	return answer
+}
+func main() {
+	nums := []int{-1, 0, 1, 2, -1, -4}
+
+	threeSum(nums)
 }
